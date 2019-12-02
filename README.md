@@ -3,6 +3,8 @@
 
 This project is itended to give the user the possibility to visualize the historical data of the famous "homee" smart home.
 
+For easy compatibility and flexibility this system leverages the docker containerization. That means all services are running in a dedicated docker container.
+
 ### Components used are:
 
 1. Logstash:
