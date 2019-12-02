@@ -1,0 +1,2 @@
+- pipeline.id: homee_verlaufsdaten
+  path.config: "/usr/share/logstash/conf.d/homee.conf"
