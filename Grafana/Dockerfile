@@ -1,6 +1,4 @@
-ARG GRAFANA_VERSION
-
-FROM grafana/grafana:6.4.2
+FROM grafana/grafana:6.6.2
 
 USER root
 RUN apk update && \
@@ -16,16 +14,12 @@ ENV PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
     GF_PATHS_DATA="/var/lib/grafana" \
     GF_PATHS_HOME="/usr/share/grafana" \
     GF_PATHS_LOGS="/var/log/grafana" \
-    #GF_PATHS_PLUGINS="/var/lib/grafana/plugins" \
     GF_PATHS_PROVISIONING="/etc/grafana/provisioning" \
-    GF_PATHS_DASHBOARDS="/var/lib/grafana/dashboards"
-    # GF_SECURITY_ADMIN_USER="admin" \
-    # GF_SECURITY_ADMIN_PASSWORD="passw0rd" \
-    # GF_USERS_DEFAULT_THEME="dark" \
-    # GF_USERS_ALLOW_SIGN_UP=false \
-    # GF_USERS_ALLOW_ORG_CREATE=false \
-    # GF_AUTH_ANONYMOUS_ENABLED=false 
-    #GF_INSTALL_PLUGINS="Elasticsearch"
+    GF_PATHS_DASHBOARDS="/var/lib/grafana/dashboards" \
+    GF_PANELS_DISABLE_SANITZIE_HTML=true \
+    GF_SECURITY_ADMIN_USER="admin" \
+    GF_SECURITY_ADMIN_PASSWORD="admin" \
+    GF_USERS_DEFAULT_THEME="dark"
 
 COPY ./run.sh ${GF_PATHS_DATA}/run.sh
 

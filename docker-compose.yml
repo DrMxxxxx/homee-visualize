@@ -1,0 +1,55 @@
+version: '3'
+services:
+  logstash:
+    image: drmxxxxx/homee:LS-latest
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "20m"    
+    build:
+      context: LLogstash/
+    ports:
+      - "5000:5000"
+      - "9600:9600"
+    volumes:
+      - /local/path/to/logstash:/var/log/logstash # Lokaler Pfad für LS zum speichern einer sincedb. WICHTIG! NICHT LÖSCHEN!
+      - /local/path/to/homee_csv:/var/opt/logs # Hier den lokalen Pfad zu den homee Verlaufsdaten angeben
+    networks:
+      - homee
+
+  grafana:
+    image: drmxxxxx/homee:GRF-latest
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "20m"    
+    build:
+      context: Grafana/
+    volumes:
+      - /local/path/to/grafana:/var/lib/grafana # Hier einen lokalen Pfad angeben. Darin wird die Konfig von Grafana dauerhaft gespeichert
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_PANELS_DISABLE_SANITZIE_HTML=true
+    networks:
+      - homee
+
+  influxdb:
+    image: drmxxxxx/homee:INDB-latest
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "20m"    
+    build:
+      context: InfluxDB/
+    volumes:
+      - /local/path/to/InfluxDB:/var/lib/influxdb # Hier einen lokalen Pfad für die Datanbank angeben.
+    networks:
+      - homee
+
+networks:
+  homee:
+    driver: overlay

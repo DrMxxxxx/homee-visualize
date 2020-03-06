@@ -1,4 +1,4 @@
-From docker.elastic.co/logstash/logstash:7.3.1
+From docker.elastic.co/logstash/logstash:7.6.0
 
 COPY . .
 
