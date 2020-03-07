@@ -1,6 +1,6 @@
 FROM influxdb:1.7.10-alpine
 
-ENV INFLUXDB_DB=verlaufsdaten \
+ENV INFLUXDB_DB=homee \
     INFLUXDB_ADMIN_USER=admin \
     INFLUXDB_ADMIN_PASSWORD=homeeDB_admin \
     INFLUXDB_USER=user \

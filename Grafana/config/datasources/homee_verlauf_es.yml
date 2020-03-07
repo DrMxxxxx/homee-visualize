@@ -4,6 +4,7 @@ apiVersion: 1
 datasources:
   - name: InfluxDB
     type: influxdb
+    isDefault: true
     access: proxy
     database: verlaufsdaten
     user: admin
@@ -11,3 +12,5 @@ datasources:
     url: http://influxdb:8086
     jsonData:
       httpMode: GET
+    version: 1
+    editable: true

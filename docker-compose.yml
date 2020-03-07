@@ -2,6 +2,7 @@ version: '3'
 services:
   logstash:
     image: drmxxxxx/homee:LS-latest
+    hostname: logstash
     logging:
       driver: "json-file"
       options:
@@ -20,6 +21,7 @@ services:
 
   grafana:
     image: drmxxxxx/homee:GRF-latest
+    hostname: grafana
     logging:
       driver: "json-file"
       options:
@@ -38,6 +40,7 @@ services:
 
   influxdb:
     image: drmxxxxx/homee:INDB-latest
+    hostname: influxdb
     logging:
       driver: "json-file"
       options:
