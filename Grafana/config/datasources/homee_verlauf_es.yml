@@ -6,7 +6,7 @@ datasources:
     type: influxdb
     isDefault: true
     access: proxy
-    database: verlaufsdaten
+    database: homee
     user: admin
     password: homeeDB_admin
     url: http://influxdb:8086
