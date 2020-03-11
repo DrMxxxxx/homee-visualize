@@ -25,8 +25,8 @@ COPY ./run.sh ${GF_PATHS_DATA}/run.sh
 
 USER root
 RUN mkdir -p "$GF_PATHS_HOME/.aws" && \
-    #groupadd -r -g $GF_GID grafana && \
-    #useradd -r -u $GF_UID -g grafana grafana && \
+    groupadd -r -g $GF_GID grafana && \
+    useradd -r -u $GF_UID -g grafana grafana && \
     mkdir -p "$GF_PATHS_PROVISIONING/datasources" \
              "$GF_PATHS_PROVISIONING/dashboards" \
              "$GF_PATHS_PROVISIONING/notifiers" \
