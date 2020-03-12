@@ -1,0 +1,16 @@
+
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    isDefault: true
+    access: proxy
+    database: homee
+    user: admin
+    password: homeeDB_admin
+    url: http://localhost:8086
+    jsonData:
+      httpMode: GET
+    version: 1
+    editable: true
