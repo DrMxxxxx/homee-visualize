@@ -1,0 +1,50 @@
+SELECT ("sum_last" * 100 / "sum_first") - 100 FROM
+    (
+    SELECT sum("last") AS "sum_last"
+    FROM 
+        (
+        SELECT last("value")
+        FROM "verlaufsdaten" 
+        WHERE ("metrix" = 'Summierter Verbrauch') 
+        AND $timeFilter GROUP BY time(1d), "device"
+        ) GROUP BY time(1d)
+    ),
+    (
+    SELECT sum("first") AS "sum_first"
+    FROM
+        (
+        SELECT first("value")
+        FROM "verlaufsdaten" 
+        WHERE ("metrix" = 'Summierter Verbrauch') 
+        AND $timeFilter GROUP BY time(1d), "device"
+        ) GROUP BY time(1d)
+    )
+
+
+
+
+SELECT "sum_last" FROM
+    (
+    SELECT sum("last") AS "sum_last"
+    FROM 
+        (
+        SELECT last("value")
+        FROM "verlaufsdaten" 
+        WHERE ("metrix" = 'Summierter Verbrauch') 
+        AND $timeFilter GROUP BY time(1d), "device"
+        ) GROUP BY time(1d)
+    )
+
+
+SELECT "sum_first" FROM
+    (
+    SELECT sum("first") AS "sum_first"
+    FROM 
+        (
+        SELECT first("value")
+        FROM "verlaufsdaten" 
+        WHERE ("metrix" = 'Summierter Verbrauch') 
+        AND $timeFilter GROUP BY time(1d), "device"
+        ) GROUP BY time(1d)
+    )
+
