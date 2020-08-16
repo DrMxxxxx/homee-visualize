@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.6.2
+FROM grafana/grafana:7.1.0
 
 USER root
 RUN apk update && \
