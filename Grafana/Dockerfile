@@ -1,4 +1,4 @@
-FROM grafana/grafana:7.1.0
+FROM grafana/grafana:7.1.5
 
 USER root
 RUN apk update && \
@@ -49,7 +49,14 @@ RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-pie
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install fatcloud-windrose-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-polystat-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-clock-panel && \
-    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install andig-darksky-datasource && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-hourly-heatmap-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install speakyourcode-button-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install natel-discrete-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-dynamictext-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install agenty-flowcharting-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-hourly-heatmap-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install magnesium-wordcloud-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install briangann-datatable-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install yesoreyeram-boomtable-panel && \
     grafana-cli plugins update-all
 
