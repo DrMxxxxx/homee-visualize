@@ -53,6 +53,7 @@ RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-pie
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install aceiot-svg-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install gapit-htmlgraphics-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install novatec-sdg-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install yesoreyeram-boomtable-panel && \
     grafana-cli plugins update-all
 
 ENV GF_PATHS_PLUGINS="/data/grafana/plugins"
