@@ -1,44 +1,36 @@
-FROM grafana/grafana:7.1.5
+FROM grafana/grafana:7.5.5
 
 USER root
-RUN apk update && \
+RUN apk add tcpdump && \
+    apk add curl && \
+    apk add git && \
     apk upgrade
 
-COPY config /tmp/config
-
-ARG GF_UID="472"
-ARG GF_GID="472"
+# ARG GF_UID="472"
+# ARG GF_GID="472"
 
 ENV PATH=/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     GF_PATHS_CONFIG="/etc/grafana/grafana.ini" \
     GF_PATHS_DATA="/var/lib/grafana" \
     GF_PATHS_HOME="/usr/share/grafana" \
     GF_PATHS_LOGS="/var/log/grafana" \
+    GF_PATHS_PLUGINS="/var/lib/grafana/plugins" \
     GF_PATHS_PROVISIONING="/etc/grafana/provisioning" \
-    GF_PATHS_DASHBOARDS="/var/lib/grafana/dashboards" \
-    GF_PANELS_DISABLE_SANITIZE_HTML=true \
-    GF_SECURITY_ADMIN_USER="admin" \
-    GF_SECURITY_ADMIN_PASSWORD="admin" \
-    GF_USERS_DEFAULT_THEME="dark"
+    GF_PATHS_DASHBOARDS="/var/lib/grafana/dashboards"
 
 COPY ./run.sh ${GF_PATHS_DATA}/run.sh
 
-USER root
+#USER root
+RUN addgroup -S grafana
+
 RUN mkdir -p "$GF_PATHS_HOME/.aws" && \
-    #groupadd -r -g $GF_GID grafana && \
-    #useradd -r -u $GF_UID -g grafana grafana && \
     mkdir -p "$GF_PATHS_PROVISIONING/datasources" \
              "$GF_PATHS_PROVISIONING/dashboards" \
              "$GF_PATHS_PROVISIONING/notifiers" \
              "$GF_PATHS_DASHBOARDS" \
              "$GF_PATHS_LOGS" \
              "$GF_PATHS_DATA" && \
-    # cp "$GF_PATHS_HOME/conf/sample.ini" "$GF_PATHS_CONFIG" && \
-    # cp "/tmp/config/grafana.ini" "$GF_PATHS_CONFIG" && \
-    # cp "$GF_PATHS_HOME/conf/ldap.toml" /etc/grafana/ldap.toml && \
-    cp -r "/tmp/config/datasources/." "$GF_PATHS_PROVISIONING/datasources" && \
-    # cp -r "/tmp/config/dashboards/." "$GF_PATHS_PROVISIONING/dashboards" && \
-    # cp -r "/tmp/config/dashboards/files/." "$GF_PATHS_DASHBOARDS" && \
+    #cp "/tmp/config/grafana.ini" "$GF_PATHS_CONFIG" && \
     chown -R grafana:grafana "$GF_PATHS_DATA" "$GF_PATHS_HOME/.aws" "$GF_PATHS_LOGS" "$GF_PATHS_PLUGINS" "$GF_PATHS_PROVISIONING" "$GF_PATHS_DASHBOARDS" && \
     chmod 777 -R "$GF_PATHS_DATA" "$GF_PATHS_HOME/.aws" "$GF_PATHS_LOGS" "$GF_PATHS_PLUGINS" "$GF_PATHS_PROVISIONING" "$GF_PATHS_DASHBOARDS"
 
