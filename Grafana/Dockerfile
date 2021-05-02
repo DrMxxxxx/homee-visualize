@@ -37,19 +37,22 @@ RUN mkdir -p "$GF_PATHS_HOME/.aws" && \
 RUN mkdir -p /data/grafana/plugins && chown -R grafana:grafana /data/grafana/plugins
 
 RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-piechart-panel && \
-    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install flant-statusmap-panel && \
-    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install fatcloud-windrose-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-polystat-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-clock-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install michaeldmoore-multistat-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install grafana-worldmap-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-hourly-heatmap-panel && \
-    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install speakyourcode-button-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install cloudspout-button-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install natel-discrete-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-dynamictext-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-treemap-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install agenty-flowcharting-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install marcusolsson-hourly-heatmap-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install magnesium-wordcloud-panel && \
     grafana-cli --pluginsDir "/data/grafana/plugins" plugins install briangann-datatable-panel && \
-    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install yesoreyeram-boomtable-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install aceiot-svg-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install gapit-htmlgraphics-panel && \
+    grafana-cli --pluginsDir "/data/grafana/plugins" plugins install novatec-sdg-panel && \
     grafana-cli plugins update-all
 
 ENV GF_PATHS_PLUGINS="/data/grafana/plugins"
