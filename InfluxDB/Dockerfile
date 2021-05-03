@@ -1,4 +1,4 @@
-FROM influxdb:1.7.10-alpine
+FROM influxdb:2.0.6-alpine
 
 ENV INFLUXDB_DB=homee \
     INFLUXDB_ADMIN_USER=admin \
