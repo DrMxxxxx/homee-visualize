@@ -1,4 +1,6 @@
-FROM grafana/grafana:7.5.5
+ARG GRAFANA
+
+FROM grafana/grafana:${GRAFANA}
 
 USER root
 RUN apk add tcpdump && \

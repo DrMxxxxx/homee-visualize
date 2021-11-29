@@ -1,4 +1,6 @@
-FROM docker.elastic.co/logstash/logstash:7.12.0
+ARG LOGSTASH
+
+FROM docker.elastic.co/logstash/logstash:${LOGSTASH}
 
 COPY . .
 
