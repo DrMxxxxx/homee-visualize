@@ -1,0 +1,22 @@
+version: '3'
+services:
+  logstash:
+    image: drmxxxxx/homee:LS-${TAG}
+    build:
+      context: Logstash/
+      args:
+        LOGSTASH: ${LOGSTASH}
+
+  grafana:
+    image: drmxxxxx/homee:GRF-${TAG}
+    build:
+      context: Grafana/
+      args:
+        GRAFANA: ${GRAFANA}
+
+  influxdb:
+    image: drmxxxxx/homee:INDB-${TAG}
+    build:
+      context: InfluxDB/
+      args:
+        INFLUXDB: ${INFLUXDB}
