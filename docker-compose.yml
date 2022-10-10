@@ -13,7 +13,7 @@ services:
       - "9600:9600"
     volumes:
       - /volume1/homes/homee_ftp/Logstash:/var/log/logstash # Lokaler Pfad für LS zum speichern einer sincedb. WICHTIG! NICHT LÖSCHEN!
-      - /volume1/homes/homee_ftp/homee_ftp/verlaufsdaten:/var/opt/logs # Hier den lokalen Pfad zu den homee Verlaufsdaten angeben
+      - /lokaler/pfad/zu/den/csvdateien:/var/opt/logs # Hier den lokalen Pfad zu den homee Verlaufsdaten angeben
 
   grafana:
     image: drmxxxxx/homee:GRF-latest
@@ -24,7 +24,7 @@ services:
         max-file: "10"
         max-size: "20m"    
     volumes:
-      - /volume1/homes/homee_ftp/Grafana:/var/lib/grafana # Hier einen lokalen Pfad angeben. Darin wird die Konfig von Grafana dauerhaft gespeichert
+      - /lokaler/Pfad/fuer/grafana:/var/lib/grafana # Hier einen lokalen Pfad angeben. Darin wird die Konfig von Grafana dauerhaft gespeichert
     ports:
       - "3000:3000"
     environment:
